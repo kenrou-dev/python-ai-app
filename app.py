@@ -18,6 +18,220 @@ st.set_page_config(
     layout="wide",
 )
 
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+html, body, [class*="css"] {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* ── 背景 ── */
+.stApp {
+    background: #f0f2f6;
+}
+
+[data-testid="block-container"] {
+    padding: 1.5rem 2.5rem 3rem !important;
+}
+
+/* ── サイドバー ── */
+[data-testid="stSidebar"] {
+    background: linear-gradient(160deg, #0f0c29, #302b63, #24243e) !important;
+}
+
+[data-testid="stSidebar"] label {
+    color: #a0aec0 !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+}
+
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 {
+    color: white !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] li {
+    color: #cbd5e0 !important;
+}
+
+[data-testid="stSidebar"] .stTextInput input {
+    background: rgba(255,255,255,0.08) !important;
+    border: 1px solid rgba(255,255,255,0.18) !important;
+    color: white !important;
+    border-radius: 8px !important;
+}
+
+[data-testid="stSidebar"] .stSelectbox > div > div {
+    background: rgba(255,255,255,0.08) !important;
+    border: 1px solid rgba(255,255,255,0.18) !important;
+    color: white !important;
+    border-radius: 8px !important;
+}
+
+[data-testid="stSidebar"] hr {
+    border-color: rgba(255,255,255,0.15) !important;
+}
+
+/* ── タイトル ── */
+h1 {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+}
+
+h2 {
+    color: #2d3748 !important;
+    font-weight: 600 !important;
+    font-size: 1.35rem !important;
+}
+
+h3 {
+    color: #4a5568 !important;
+    font-weight: 600 !important;
+}
+
+/* ── タブ ── */
+.stTabs [data-baseweb="tab-list"] {
+    background: white !important;
+    border-radius: 14px !important;
+    padding: 5px !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08) !important;
+    gap: 4px !important;
+    border-bottom: none !important;
+}
+
+.stTabs [data-baseweb="tab"] {
+    border-radius: 10px !important;
+    padding: 8px 18px !important;
+    font-weight: 500 !important;
+    font-size: 0.88rem !important;
+    color: #718096 !important;
+    border: none !important;
+    transition: all 0.2s ease !important;
+    background: transparent !important;
+}
+
+.stTabs [aria-selected="true"] {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    color: white !important;
+}
+
+.stTabs [data-baseweb="tab-panel"] {
+    background: white !important;
+    border-radius: 16px !important;
+    padding: 2rem !important;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07) !important;
+    margin-top: 0.75rem !important;
+}
+
+/* ── ボタン（生成） ── */
+.stButton > button[kind="primary"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 0.55rem 2rem !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    box-shadow: 0 4px 15px rgba(102,126,234,0.4) !important;
+    transition: all 0.25s ease !important;
+}
+
+.stButton > button[kind="primary"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(102,126,234,0.55) !important;
+}
+
+.stButton > button[kind="primary"]:active {
+    transform: translateY(0px) !important;
+}
+
+/* ── ダウンロードボタン ── */
+.stDownloadButton > button {
+    background: white !important;
+    color: #667eea !important;
+    border: 2px solid #667eea !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    transition: all 0.25s ease !important;
+}
+
+.stDownloadButton > button:hover {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    color: white !important;
+    border-color: transparent !important;
+}
+
+/* ── 入力フィールド ── */
+.stTextInput > div > div > input,
+.stTextArea > div > div > textarea {
+    border: 2px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    font-family: 'Inter', sans-serif !important;
+    background: #fafafa !important;
+    color: #1a202c !important;
+    caret-color: #667eea !important;
+    transition: all 0.2s ease !important;
+}
+
+.stTextInput > div > div > input:focus,
+.stTextArea > div > div > textarea:focus {
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 3px rgba(102,126,234,0.15) !important;
+    background: white !important;
+}
+
+/* ── セレクトボックス ── */
+.stSelectbox > div > div {
+    border: 2px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    background: #fafafa !important;
+    transition: all 0.2s ease !important;
+}
+
+/* ── ラベル ── */
+label {
+    font-weight: 500 !important;
+    color: #4a5568 !important;
+    font-size: 0.88rem !important;
+}
+
+/* ── キャプション ── */
+.stCaption, [data-testid="stCaptionContainer"] {
+    color: #718096 !important;
+    font-size: 0.84rem !important;
+}
+
+/* ── 区切り線 ── */
+hr {
+    border: none !important;
+    height: 2px !important;
+    background: linear-gradient(90deg, transparent, #667eea 30%, #764ba2 70%, transparent) !important;
+    margin: 1.5rem 0 !important;
+    opacity: 0.4 !important;
+}
+
+/* ── アラート ── */
+.stAlert {
+    border-radius: 10px !important;
+    border: none !important;
+}
+
+/* ── スライダー ── */
+[data-testid="stSlider"] [role="slider"] {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
 # --- サイドバー ---
 with st.sidebar:
     st.title("⚙️ 設定")
@@ -46,6 +260,11 @@ def check_api_key() -> bool:
 
 # --- メインエリア ---
 st.title("✍️ AI ライティングツール")
+st.markdown(
+    "<p style='color:#718096; margin-top:-0.8rem; margin-bottom:1.5rem; font-size:1rem;'>"
+    "Gemini AI を使ったライティングアシスタント</p>",
+    unsafe_allow_html=True,
+)
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs(
     ["📝 ブログ記事", "📧 メール返信", "📄 文章要約", "🔄 リライト", "💡 タイトル生成"]
